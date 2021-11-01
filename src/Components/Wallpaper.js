@@ -12,31 +12,31 @@ class Wallpaper extends React.Component {
             suggestions: []
         }
     }
-    handleChangeLocation = (event) => {
+    handlechangeLocation = (event) => {
         const locationId = event.target.value;
-        sessionStorage.setItems('locationId', locationId);
-
-        axios({
-            url: `http://localhost:2001/restaurants/${locationId}`,
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        })
-            .then(res => {
-                this.setState({restaurantList: res.data.restaurants})
-            })
-            .catch()
+        sessionStorage.setItem('locationId', locationId);
  
-    }
-    handleInputChange = (event) => {
+        axios({
+         url: `http://localhost:2001/restaurants/${locationId}`,
+         method: 'GET',
+         headers: { 'Content-Type': 'application/json' }
+     })
+         .then(res => {
+             this.setState({ restaurantList: res.data.restaurants })
+         })
+         .catch()
+     }
+     handleInputChange = (event) => {
         const { restaurantList } = this.state;
-        const searchText = event.target.value;
+        const inputText = event.target.value;
 
+        
         let searchRestaurants = [];
-        if (searchText) {
-            searchRestaurants = restaurantList.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
+        if (inputText) {
+            searchRestaurants = restaurantList.filter(item => item.name.toLowerCase().includes(inputText.toLowerCase()));
         }
 
-        this.setState({ suggestions: searchRestaurants, searchText });
+        this.setState({ suggestions: searchRestaurants, inputText });
     }
 
     selectedText = (resObj) => {
@@ -44,17 +44,17 @@ class Wallpaper extends React.Component {
     }
 
     renderSuggestions = () => {
-        const { suggestions, searchText } = this.state;
+        const { suggestions, inputText } = this.state;
 
-        if (suggestions.length == 0 && searchText == "") {
-            return <ul >
-                <li>No Search Results Found</li>
+        if (suggestions.length == 0 && inputText == "") {
+            return <ul className="suggestions" >
+                <li className="suggestion_list">No Search Results Found</li>
             </ul>
         }
         return (
-            <ul >
+            <ul className="suggestions">
                 {
-                    suggestions.map((item, index) => (<li key={index} onClick={() => this.selectedText(item)}>{`${item.name} -   ${item.locality},${item.city}`}</li>))
+                    suggestions.map((item, index) => (<li className="suggestion_list" key={index} onClick={() => this.selectedText(item)}>{`${item.name} -   ${item.locality},${item.city}`}</li>))
                 }
             </ul>
         );
@@ -64,6 +64,7 @@ class Wallpaper extends React.Component {
     
     render() {
         const { locationsData } = this.props;
+        const { restaurantList } =this.state;
         
         return (
             <div>
@@ -79,10 +80,10 @@ class Wallpaper extends React.Component {
                     </div>
 
                     <div className="locationSelector">
-                        <select className="locationDropdown">
+                        <select className="locationDropdown" onChange={this.handlechangeLocation}>
                             <option value="0" >Select</option>
                             {locationsData.map((item, index) => {
-                                return <option key={index + 1} value={index + 1} >{`${item.name}, ${item.city}`}</option>
+                                return <option key={index + 1} value={item.location_id} >{`${item.name}, ${item.city}`}</option>
                             })}
                         </select>
                         <div>
