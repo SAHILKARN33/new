@@ -55,7 +55,7 @@ class Details extends React.Component {
     handleOrder = () => {
         const { restId } = this.state;
         axios({
-            url: `https://backendzom.herokuapp.com/mealtypes/${restId}`,
+            url: `https://backendzom.herokuapp.com/menuitems/${restId}`,
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
