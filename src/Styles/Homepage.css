@@ -209,14 +209,12 @@
 
 @media only screen and (max-width: 600px) {
     .restaurantsinput {
-        height: 40px;
-        width: 245px;
+        height: 35px;
+        width: 200px;
         color: gray;
-        border: none;
-        border-radius: 0px;
         font-size: 15px;
-        opacity: 0.7;
-        float: left;
+        margin-top:60px;
+        margin-left: -102px;
     }
     .logo {
         text-align: center;
@@ -227,7 +225,7 @@
         height: 75px;
         border-radius: 50%;
         position: absolute;
-        top: 10%;
+        top: 20%;
         margin-left: 40%;
         font-family: Poppins;
         font-weight: bold;
@@ -241,10 +239,18 @@
     }
     .search {
         position: absolute !important;
-        left: 5px;
+        left: 10px;
         margin: 2% 0px;
         top: 73px !important;
     }
+    
+.quicksearch {
+    position: absolute;
+    margin-left: -40px;
+    margin-top: -70px;
+}
+
+
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1150px) {
