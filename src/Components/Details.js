@@ -42,7 +42,7 @@ class Details extends React.Component {
         const { restaurant } = qs;
 
         axios({
-            url: `http://localhost:2001/restaurant/${restaurant}`,
+            url: `https://backendzom.herokuapp.com/${restaurant}`,
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
@@ -55,7 +55,7 @@ class Details extends React.Component {
     handleOrder = () => {
         const { restId } = this.state;
         axios({
-            url: `http://localhost:2001/menuitems/${restId}`,
+            url: `https://backendzom.herokuapp.com/${restId}`,
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
@@ -131,7 +131,7 @@ class Details extends React.Component {
     }
 
     getData = (data) => {
-        return fetch(`http://localhost:2001/payment`, {
+        return fetch(`https://backendzom.herokuapp.com/payment`, {
             method: "POST",
             headers: {
                 Accept: "application/json",

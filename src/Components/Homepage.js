@@ -15,7 +15,7 @@ class Homepage extends React.Component {
     componentDidMount() {
         sessionStorage.clear();
         axios({
-            url: 'http://localhost:2001/locations',
+            url: 'https://backendzom.herokuapp.com/locations',
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
@@ -25,7 +25,7 @@ class Homepage extends React.Component {
             .catch()
 
         axios({
-            url: 'http://localhost:2001/mealtypes',
+            url: 'https://backendzom.herokuapp.com/mealtypes',
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
