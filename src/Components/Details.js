@@ -15,7 +15,9 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         backgroundColor: 'antiquewhite',
-        border: '1px solid brown'
+        border: '1px solid brown',
+        width: '70%',
+        height: '75%'
     },
 };
 
